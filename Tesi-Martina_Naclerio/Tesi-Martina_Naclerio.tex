@@ -1,0 +1,180 @@
+%% !TEX root = .tex
+% !TEX TS-program = lualatex
+% !TEX spellcheck = 
+% !TEX encoding = UTF-8
+% !BIB TS-program = biber
+
+\documentclass[%
+%draft,%
+%twoside,% #Stampa
+12pt]{article}
+
+%% Pacchetti base per pdflatex
+%\usepackage[T1]{fontenc} % Dichiara la codifica dei font: così le lettere accentate non vengono rappresentate come sovrapposizioni di lettere e accenti ma con glifi appositi
+%\usepackage[utf8]{inputenc} % Codifica dei caratteri; deve essere uguale alla codifica dell'editor
+%\usepackage[%
+%%greek.ancient,%
+%italian]{babel} % Dichiara le lingue del documento, l'ultima è quella principale
+%%\newcommand{\greco}{\foreignlanguage{greek}}
+%
+%\renewcommand{\familydefault}{\sfdefault}
+%\usepackage{times}
+%%\usepackage{helvet}
+
+% Pacchetti base per lualatex
+\usepackage{fontspec} % Gestisce i font del sistema
+\setmainfont{Minion3} % Imposta il font principale del documento
+\usepackage{polyglossia} % Corrispettivo di babel
+\setmainlanguage{english} % Imposta la lingua principale del documento
+\setotherlanguage%
+%[variant=ancient]%
+{greek} % Imposta il greco antico come lingua secondaria
+
+% Formattazione generale
+\usepackage{microtype}
+\usepackage{indentfirst}
+%\setlength\parindent{0pt}
+\usepackage{geometry}
+\geometry{a4paper,heightrounded} % modifica di poco le dimensioni della gabbia del testo per farle contenere un numero intero di righe
+\usepackage{layaureo}
+%\usepackage{multicol}
+\usepackage{enumitem}
+\setlist{itemsep=0.2em}
+\setlist[description]{labelsep=0.75em}
+
+% Colori
+\usepackage[svgnames]{xcolor}
+%\color{white} % #DarkMode
+%\definecolor{SfondoGrigio}{RGB}{55,55,55} % #DarkMode
+%\pagecolor{SfondoGrigio} % #DarkMode
+
+% Figure e tabelle
+\usepackage{graphicx}
+\usepackage{float} % Per inserire un oggetto mobile nel punto esatto in cui compare nel testo con il comando [H]
+\usepackage{subcaption} % Permette di inserire più figure all'interno dello stesso oggetto mobile
+\usepackage{booktabs} % Produce filetti delle tabelle migliori di quelli standard
+\usepackage{caption}
+\captionsetup{%
+width=0.9\textwidth,%
+font=small,labelfont={sf,bf},tableposition=top,figureposition=bottom} % La posizione della didascalia va comunque specificata nel sorgente mettendo \caption{} prima o dopo \includegraphics{}
+
+% Pacchetti scientifici
+\usepackage{siunitx}
+\sisetup{output-decimal-marker={,},	list-units=single,range-units=single,
+	%	detect-all,
+	mode=match,propagate-math-font=true,reset-math-version=false,reset-text-family=false,reset-text-series=false,text-family-to-math=true,text-series-to-math=true,
+	range-open-phrase={\text{from} },
+	%	range-phrase={--},
+	%	retain-explicit-plus,
+}
+\usepackage{chemformula}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\DeclareSIUnit\litre{l}
+
+% Bibliografia automatica
+\input{bibliography/bibliography_settings.tex}
+\addbibresource{bibliography/bibliografia-problematica.bib} % Specifica da quale file prendere le referenze bibliografiche
+\addbibresource{bibliography/bibliografia-zotero.bib} % Specifica da quale file prendere le referenze bibliografiche
+
+% Altri pacchetti
+%\usepackage[useregional]{datetime2}
+\usepackage[numberlinked=true,symbol=$\!^\wedge\,$]{footnotebackref} % Da commentare per la #Stampa
+\input{hyphenation.tex} % Regola la sillabazione: si inseriscono le parole con la propria sillabazione separando le sillabe con uno trattino (più parole vanno separate con uno spazio)
+% Per regolare la sillabazione solo localmente, si possono inserire direttamente nel testo:
+	% '\-' specifica direttamente i punti della parola in cui è permessa la sillabazione
+	% \mbox{} mantiene unita la parola al suo interno e ne impedisce la sillabazione
+
+% Nuovi comandi
+\newcommand{\ap}[1]{\textsuperscript{#1}}
+\newcommand{\ped}[1]{\textsubscript{#1}}
+\newcommand{\wariv}{\colorbox{Yellow}{.}} % Soft-D@RiV
+\newcommand{\zariv}{\colorbox{Yellow}{\textcolor{Crimson}{D@RiV}}} % Hard-D@RiV
+\usepackage{soul}
+\newcommand{\zxriv}[1]{\textcolor{Crimson}{\hl{#1}}} % Hard-D@RiV
+\newcommand{\species}[1]{\textit{#1}}
+%\newcommand{\pianta}[1]{\textit{#1}}
+
+% Pacchetti/comandi temporanei
+\usepackage{pdfpages}
+
+% Altro
+\overfullrule=1cm
+\usepackage{hyperref} % Va caricato per ultimo (ma prima di bookmarks)
+\hypersetup{%
+	pdftitle={},
+	pdfauthor={Martina Naclerio},
+	pdfsubject={},
+%	pdfkeywords={}, % le keywords vanno separate con una virgola
+%	pdfcreator={},
+	colorlinks=true,
+	linkcolor=MidnightBlue, % colore dei normali interlink
+	citecolor=red, % colore delle citazioni bibliografiche nel testo
+	urlcolor=DarkRed, % colore dei collegamenti \url{} al web
+%	hidelinks % rende tutti i collegamenti del colore principale e senza riquadri (utile per la #Stampa)
+}
+\usepackage{bookmark} % Produce l'indice interno al pdf e permette di personalizzarlo meglio rispetto al solo hyperref
+
+% Glossario
+\usepackage[abbreviations]{glossaries-extra}
+\setabbreviationstyle[acronym]{long-short}
+\loadglsentries{glossary}
+
+%	Caratteri per copia-incolla rapidi:
+%		’ ' apostrofo curvo e dritto
+%		“” " virgolette aperte, chiuse e indifferenziate
+
+\begin{document}
+\pagenumbering{Roman}
+\pagestyle{empty}
+
+
+%\pdfbookmark[1]{Frontespizio}{frontespizio}
+%\includepdf{Frontespizio/Frontespizio-nofirma.pdf}
+
+
+%\cleardoublepage
+%\input{Dedica.tex}
+
+
+\cleardoublepage
+\thispagestyle{empty}
+\pdfbookmark[1]{Indice}{indice}
+{\hypersetup{linkcolor=black}%
+	\tableofcontents%
+}
+
+
+\cleardoublepage
+\pagestyle{plain}
+%\input{Ringraziamenti.tex}
+
+
+\cleardoublepage
+\pagenumbering{arabic}
+\input{chapters/abstract.tex}
+
+\cleardoublepage
+\input{chapters/introduction.tex}
+
+\cleardoublepage
+\input{chapters/thesis_objective.tex}
+
+\cleardoublepage
+\input{chapters/materials_methods.tex}
+
+
+%\cleardoublepage
+%\input{.tex}
+%
+%
+%\cleardoublepage
+%\input{.tex}
+%
+%
+%
+\cleardoublepage
+%\emergencystretch 0.95em
+\printbibliography[heading=bibintoc]
+
+\end{document}

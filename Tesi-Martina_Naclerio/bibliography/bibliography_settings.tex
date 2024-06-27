@@ -1,0 +1,91 @@
+% Bibliografia automatica
+
+% Pacchetto csquotes
+\usepackage[autostyle,italian=quotes]{csquotes} % Migliora la formattazione delle citazioni: 'autostyle' adatta lo stile delle citazioni alla lingua corrente del documento, '*lingua*=guillemets/quotes' racchiude automaticamente tra virgolette caporali o virgolette ad apice i campi che prevedono le virgolette
+
+% Pacchetto biblatex
+\usepackage[%
+style=authoryear, % Specifica lo stile bibliografico e lo stile di citazione,
+uniquename=mininit,uniquelist=minyear,% Con 'style=authoryear' se ci sono due reference con lo stesso primo autore, per evitare ambiguità viene citato anche il secondo, anche se l'anno è diverso. Con queste opzioni, se l'anno è diverso allora quest'ultimo viene usato per la disambiguazione, mentre se anche l'anno è uguale viene citato il secondo autore
+maxcitenames=1,maxbibnames=2,% Il numero massimo di nomi che vengono elencati nella citazione (cite) e nella bibliografia (bib); superato il valore, viene inserito un nome seguito da "et al."
+sorting=none,% L'ordine con cui inserire le opere nella bibliografia; con 'none' vengono inserite nell'ordine in cui compaiono nel testo
+dashed=false, % L'opzione true (default), in caso di voci consecutive degli stessi autori nella bibliografia, inserisce una linea tratteggiata al posto dei nomi degli autori (utile quando sono citate molte opere dello stesso autore)
+autolang=hyphen,
+hyperref=true,backend=biber]{biblatex} % Compone la bibliografia: 'hyperref' rende le citazioni dei collegamenti cliccabili, 'backend' imposta biber come motore bibliografico
+
+% Altre impostazioni
+\DeclareNameAlias{sortname}{given-family} % Formatta i nomi degli autori secondo lo schema "Nome Cognome"; il contrario si ottiene con 'family-given'
+\AtEveryBibitem{\clearfield{month}} % Omette la stampa del mese del field 'date'
+\AtEveryBibitem{\clearfield{day}} % Omette la stampa del giorno del field 'date'
+\AtEveryBibitem{\clearfield{note}\clearfield{addendum}} % Omette la stampa del field 'note'
+\AtEveryCitekey{\clearfield{note}\clearfield{addendum}} % Fa qualcos'altro riguardo il field 'note'
+\AtEveryBibitem{\clearfield{urlyear}} % Omette la stampa del campo 'urldate'
+
+% Stampa i fields 'url', 'eprint' e 'issn' solo se il field 'doi' non è presente
+\DeclareSourcemap{
+	\maps[datatype=bibtex, overwrite]{
+		\map{
+			\step[fieldsource=doi, final]
+			\step[fieldset=url, null]
+			\step[fieldset=eprint, null]
+			\step[fieldset=issn, null]
+		}
+	}
+}
+
+
+% Rende tutta la citazione nel corpo del testo cliccabile
+\DeclareCiteCommand{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\cite}
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand*{\parencite}[\mkbibparens]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{citeyear}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcite}[\mkbibfootnote]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{ \usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\footcitetext}[\mkbibfootnotetext]
+{\usebibmacro{prenote}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{cite}}}
+{\multicitedelim}
+{\usebibmacro{postnote}}
+
+\DeclareCiteCommand{\textcite}
+{\boolfalse{cbx:parens}}
+{\usebibmacro{citeindex}%
+	\printtext[bibhyperref]{\usebibmacro{textcite}}}
+{\ifbool{cbx:parens}
+	{\bibcloseparen\global\boolfalse{cbx:parens}}
+	{}%
+	\multicitedelim}
+{\usebibmacro{textcite:postnote}}
+
+%% Specifica da quale file prendere le referenze bibliografiche
+%\addbibresource{Bibliografia-.bib}
