@@ -50,13 +50,38 @@
 
 % Figure e tabelle
 \usepackage{graphicx}
-\usepackage{float} % Per inserire un oggetto mobile nel punto esatto in cui compare nel testo con il comando [H]
-\usepackage{subcaption} % Permette di inserire più figure all'interno dello stesso oggetto mobile
+\usepackage{float} % Per forzare l'inserimento di un oggetto mobile nel punto esatto in cui compare nel testo con il comando [H]
 \usepackage{booktabs} % Produce filetti delle tabelle migliori di quelli standard
+\usepackage{subcaption} % Permette di inserire più figure all'interno dello stesso oggetto mobile
+%\subcaptionsetup{
+	%	width=0.9\linewidth, % Utile per quando si hanno sotto-didascalie lunghe e le sotto-figure si toccano: infatti se si lasciasse il default (ovvero la \linewidth) la didascalia di figure ravvicinate potrebbe toccarsi pur senza presenare errori
+	%	list=true, % Aggiunge le sotto-figure alla lista delle figure creata con '\listoffigures'
+	%	hypcap=true, % Regola il comportamento dei comandi per riferirsi alle figure come '\ref{}':
+	%%				- se 'hypcap' è impostato come 'true' il collegamento ipertestuale porta sempre alla sotto-figura
+	%%				- se 'hypcap' è impostato come 'false', dipende anche da come è impostato 'hypcap' del pacchetto caption:
+	%%					- se 'hypcap' di 'caption' è impostato come 'true', il collegamento ipertestuale porta alla 'figure' generale
+	%%					- se 'hypcap' di 'caption' è impostato come 'false', il collegamento ipertestuale porta alla sotto-didascalia
+	%}
 \usepackage{caption}
 \captionsetup{%
-width=0.9\textwidth,%
-font=small,labelfont={sf,bf},tableposition=top,figureposition=bottom} % La posizione della didascalia va comunque specificata nel sorgente mettendo \caption{} prima o dopo \includegraphics{}
+	%	indention=\parindent,
+	%	width=(\textwidth-(\parindent*2)),%
+	hypcap=true, % % Regola il comportamento dei comandi per riferirsi alle figure come '\ref{}': se 'hypcap' è impostato come 'true' il collegamento ipertestuale porta alla figura; se 'hypcap' è impostato come 'false' il collegamento ipertestuale porta alla didascalia
+	font=small,labelfont={sf,bf},tableposition=top,figureposition=bottom, % La posizione della didascalia va comunque specificata nel sorgente mettendo \caption{} prima o dopo \includegraphics{}
+}
+
+% Definizione dimensioni per sottofigure
+\newlength{\hbtwsfig} % Spazio orizzontale fra sottofigure
+\setlength{\hbtwsfig}{1em}
+\newlength{\vbtwsfig} % Spazio verticale fra sottofigure
+\setlength{\vbtwsfig}{2ex}
+\newlength{\subfigwth} % Larghezza delle sottofigure: è il \textwidth meno lo spazio orizzontale fra sottofigure diviso due. Studiato per l'inserimento di sole due sottofigure per riga
+\setlength{\subfigwth}{(\textwidth - \hbtwsfig) / 2}
+
+\newlength{\trehbtwsfig} % Spazio orizzontale fra sottofigure
+\setlength{\trehbtwsfig}{1em}
+\newlength{\tresubfigwth}
+\setlength{\tresubfigwth}{(\textwidth - (\trehbtwsfig * 2)) / 3}
 
 % Pacchetti scientifici
 \usepackage{siunitx}
@@ -154,12 +179,12 @@ font=small,labelfont={sf,bf},tableposition=top,figureposition=bottom} % La posiz
 \pagenumbering{arabic}
 \input{chapters/abstract.tex}
 
-\cleardoublepage
-\input{chapters/introduction.tex}
-
-\cleardoublepage
-\input{chapters/thesis_objective.tex}
-
+%\cleardoublepage
+%\input{chapters/introduction.tex}
+%
+%\cleardoublepage
+%\input{chapters/thesis_objective.tex}
+%
 \cleardoublepage
 \input{chapters/materials_methods.tex}
 
