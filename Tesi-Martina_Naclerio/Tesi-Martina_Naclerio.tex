@@ -86,9 +86,6 @@
 \newlength{\tresubfigwth}
 \setlength{\tresubfigwth}{(\textwidth - (\trehbtwsfig * 2)) / 3}
 
-% Nomi per plots
-\newcommand{\brpltfigtitle}[1]{\gls{anova} results for}
-
 % Pacchetti scientifici
 \usepackage{siunitx}
 \sisetup{output-decimal-marker={,},	list-units=single,range-units=single,
@@ -180,22 +177,21 @@
 \pagestyle{plain}
 %\input{Ringraziamenti.tex}
 
-
 \cleardoublepage
 \pagenumbering{arabic}
 %\input{chapters/abstract.tex}
 
-%\cleardoublepage
-%\input{chapters/introduction.tex}
-%
-%\cleardoublepage
-%\input{chapters/thesis_objective.tex}
-%
-%\cleardoublepage
+\cleardoublepage
+\input{chapters/introduction.tex}
+
+\cleardoublepage
+\input{chapters/thesis_objective.tex}
+
+\cleardoublepage
 \input{chapters/materials_methods.tex}
 
-%\cleardoublepage
-%\input{chapters/results.tex}
+\cleardoublepage
+\input{chapters/results.tex}
 %
 %
 %\cleardoublepage
