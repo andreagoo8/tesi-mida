@@ -6,6 +6,7 @@
 *.jpg
 *.HEIC
 *.heic
+*.pkl
 
 ## Core latex/pdflatex auxiliary files:
 *.aux
