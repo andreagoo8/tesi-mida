@@ -50,9 +50,12 @@
 
 % Figure e tabelle
 \usepackage{graphicx}
+\usepackage{tabularx}
 \usepackage{float} % Per forzare l'inserimento di un oggetto mobile nel punto esatto in cui compare nel testo con il comando [H]
 \usepackage{booktabs} % Produce filetti delle tabelle migliori di quelli standard
 \usepackage{subcaption} % Permette di inserire più figure all'interno dello stesso oggetto mobile
+\DeclareCaptionSubType[Alph]{figure} % Label delle subfigure in maiuscolo, senza parentesi, con un due punti
+\subcaptionsetup{labelformat=simple,labelsep=colon} % Label delle subfigure in maiuscolo, senza parentesi, con un due punti
 %\subcaptionsetup{
 	%	width=0.9\linewidth, % Utile per quando si hanno sotto-didascalie lunghe e le sotto-figure si toccano: infatti se si lasciasse il default (ovvero la \linewidth) la didascalia di figure ravvicinate potrebbe toccarsi pur senza presenare errori
 	%	list=true, % Aggiunge le sotto-figure alla lista delle figure creata con '\listoffigures'
@@ -180,16 +183,16 @@
 \input{chapters/abstract.tex}
 
 %\cleardoublepage
-%\input{chapters/introduction.tex}
+\input{chapters/introduction.tex}
 %
 %\cleardoublepage
 %\input{chapters/thesis_objective.tex}
 %
 %\cleardoublepage
-%\input{chapters/materials_methods.tex}
+\input{chapters/materials_methods.tex}
 
 %\cleardoublepage
-\input{chapters/results.tex}
+%\input{chapters/results.tex}
 %
 %
 %\cleardoublepage
