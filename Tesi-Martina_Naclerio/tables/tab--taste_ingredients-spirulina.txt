@@ -1,0 +1,17 @@
+\begin{table}[]
+\begin{tabular}{lclc}
+\multicolumn{4}{c}{\textit{\textbf{Spirulina 4\%}}}                                          \\
+\multicolumn{2}{c}{\textbf{1A}}            & \multicolumn{2}{c}{\textbf{1B}}                 \\
+Ingredients  & \multicolumn{1}{l}{Qty (g)} & Ingredients       & \multicolumn{1}{l}{Qty (g)} \\
+Lupines      & 48                          & Lupines + lentils & 56                          \\
+Oat flour    & 15                          & Oat flour         & 10                          \\
+Carrots      & 10                          & Oat flakes        & 5                           \\
+Spinach      & 10                          & Courgettes        & 15                          \\
+             & \multicolumn{1}{l}{}        & Onion             & 7                           \\
+Xanthan gum  & 2                           & Xanthan gum       & 2                           \\
+Cocconut oil & 8                           & Cocconut oil      & 8                           \\
+Spices       & 3                           & Spices            & 2                           \\
+Microalga    & 4                           & Microalga         & 4                           \\
+Tot          & 100                         & Tot               & 100                        
+\end{tabular}
+\end{table}
