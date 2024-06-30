@@ -75,15 +75,20 @@
 	font=small,labelfont={sf,bf},tableposition=top,figureposition=bottom, % La posizione della didascalia va comunque specificata nel sorgente mettendo \caption{} prima o dopo \includegraphics{}
 }
 
+% Colori per le alghe
+\definecolor{colspir}{HTML}{C5E1A5} % Spirulina
+\definecolor{colchlo}{HTML}{FFF9C4} % Chlorella
+\definecolor{colpalm}{HTML}{F7CBDA} % Palmaria
 
-% Spazii per tabelle
+% Spazi per tabelle
 \newlength{\spheader} % Spazio verticale fra righe dell'header
 \setlength{\spheader}{0.35ex}
 \newlength{\spbtwrows} % Spazio verticale fra righe
 \setlength{\spbtwrows}{0.35ex}
 \newlength{\spbtwlines} % Spazio orizzontale fra sottotabelle
 \setlength{\spbtwlines}{-0.5ex}
-
+\newlength{\spbtwrowsA} % Spazio verticale fra righe delle tabelle ANOVA
+\setlength{\spbtwrowsA}{0.2ex}
 
 % Definizione dimensioni per sottofigure
 \newlength{\hbtwsfig} % Spazio orizzontale fra sottofigure
@@ -140,6 +145,7 @@
 
 % Pacchetti/comandi temporanei
 \usepackage{pdfpages}
+\usepackage{colortbl}
 
 % Altro
 \overfullrule=1cm
@@ -197,13 +203,13 @@
 %\input{chapters/abstract.tex}
 %
 %\cleardoublepage
-\input{chapters/introduction.tex}
+%\input{chapters/introduction.tex}
 %
 %\cleardoublepage
 %\input{chapters/thesis_objective.tex}
 %
 %\cleardoublepage
-\input{chapters/materials_methods.tex}
+%\input{chapters/materials_methods.tex}
 
 %\cleardoublepage
 \input{chapters/results}
