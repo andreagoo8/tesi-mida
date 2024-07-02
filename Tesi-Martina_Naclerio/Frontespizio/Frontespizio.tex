@@ -1,0 +1,114 @@
+%% !TEX root = .tex
+% !TEX TS-program = lualatex
+% !TEX spellcheck = it-IT
+% !TEX encoding = UTF-8
+% !BIB TS-program = biber
+
+\documentclass[%
+%draft,%
+12pt]{article}
+
+% Pacchetti base per pdflatex
+\usepackage[T1]{fontenc} % Dichiara la codifica dei font: così le lettere accentate non vengono rappresentate come sovrapposizioni di lettere e accenti ma con glifi appositi
+\usepackage[utf8]{inputenc} % Codifica dei caratteri; deve essere uguale alla codifica dell'editor
+\usepackage[%
+%greek.ancient,%
+italian]{babel} % Dichiara le lingue del documento, l'ultima è quella principale
+%\newcommand{\greco}{\foreignlanguage{greek}}
+
+%\renewcommand{\familydefault}{\sfdefault}
+\usepackage{times}
+%\usepackage{helvet}
+
+%% Pacchetti base per lualatex
+%\usepackage{fontspec} % Gestisce i font del sistema
+%\setmainfont{Minion3} % Imposta il font principale del documento
+%\usepackage{polyglossia} % Corrispettivo di babel
+%\setmainlanguage{italian} % Imposta la lingua principale del documento
+%\setotherlanguage[variant=ancient]{greek} % Imposta il greco antico come lingua secondaria
+
+% Formattazione generale
+\usepackage{microtype}
+%\setlength\parindent{0pt}
+\usepackage{geometry}
+\geometry{a4paper,%
+	top=2.5cm,bottom=2cm,left=2cm,right=2cm,%
+heightrounded} % modifica di poco le dimensioni della gabbia del testo per farle contenere un numero intero di righe
+
+
+% Colori
+\usepackage[svgnames]{xcolor}
+
+
+% Figure e tabelle
+\usepackage{graphicx}
+\usepackage{float} % Per inserire un oggetto mobile nel punto esatto in cui compare nel testo con il comando [H]
+
+
+\begin{document}
+
+\thispagestyle{empty} % Per non non far comparire il numero di pagina
+\begin{figure}
+	\centering
+	\includegraphics[width=0.2\textwidth]{UniTS_100-blu}
+\end{figure}
+	
+\vspace*{0.75em}
+
+\begin{center}
+
+{\selectfont{\sffamily
+
+	{\Large Dipartimento di Scienze della Vita}
+
+}}
+
+\vspace*{3.5em}
+
+{\selectfont{\sffamily
+		{\Large Classe delle Lauree Magistrali in Biologia LM-06\\
+		
+\vspace*{1ex}
+		
+		Corso di Laurea magistrale in Ecologia dei cambiamenti globali}
+}}
+
+
+
+\vspace*{5.5em}
+
+{\linespread{1.75}\selectfont{\sffamily
+		{\LARGE \textbf{Effect of algae fortification}}
+		
+		{\LARGE \textbf{on physicochemical and sensory properties}}
+		
+		{\LARGE \textbf{of plant-based burgers}}
+		
+		\textcolor{white}{.}
+}}
+
+\vspace*{5.5em}
+
+{\linespread{1}\selectfont
+{\sffamily
+	\begin{flushleft}
+		{\large
+		Laureanda:			\hfill Relatore:
+		
+		Martina Naclerio	\hfill Prof.~Stanislao Bevilacqua \\ % NON è meglio laureando??
+\vspace*{1em}
+		\hfill Correlatrice:\\
+		\vspace*{0.75mm}
+		\hfill Dott.ssa~Kricelle Deamici
+		}
+	\end{flushleft}
+}}
+
+\vfill
+
+{\linespread{2}\selectfont{\sffamily
+		{\Large Anno accademico 2023/2024}
+}}
+
+\end{center}
+\end{document}
